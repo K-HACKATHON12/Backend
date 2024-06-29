@@ -4,13 +4,11 @@ from langchain.chat_models import ChatOpenAI
 import openai
 from app.core.config import settings
 
-# OpenAI Chat 모델 설정
 llm = ChatOpenAI(
-    temperature=0,  # 창의성 0으로 설정
-    model_name='gpt-3.5-turbo',  # 모델명
+    temperature=0,  
+    model_name='gpt-3.5-turbo',  
 )
 
-# 프롬프트 템플릿 생성
 prompt = PromptTemplate(
     input_variables=["country"],
     template="{country}의 수도는 어디야?",
