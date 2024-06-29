@@ -1,11 +1,11 @@
-from fastapi import APIRouter, HTTPException
-from app.services.langchain_service import get_capital
+from fastapi import APIRouter, HTTPException, Query
+from services.langchain_service import get_query
 
 router = APIRouter()
-
-@router.get("/capital/{country}")
-def read_capital(country: str):
-    response = get_capital(country)
+# api/v1/example/query/?query=hello
+@router.get("/query/")
+def read_query(query: str = Query(..., description="Query string to find query")):
+    response = get_query(query)
     if "error" in response.lower():
         raise HTTPException(status_code=500, detail=response)
-    return {"country": country, "capital": response}
+    return {"query": query, "response": response}
