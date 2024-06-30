@@ -13,7 +13,7 @@ app.add_middleware(
     allow_headers=["*"],  # 모든 HTTP 헤더를 허용합니다.
 )
 
-app.include_router(langchain_router, prefix="/langchain/api")
+app.include_router(langchain_router, prefix="/chat")
 
 if __name__ == "__main__":
     import uvicorn

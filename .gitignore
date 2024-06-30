@@ -1,4 +1,5 @@
 .env
 DB.env
+gpt.env
 venv
 __pycache__
