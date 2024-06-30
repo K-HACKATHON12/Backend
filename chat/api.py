@@ -3,6 +3,7 @@ from chat.services.langchain_service import get_query
 
 langchain_router = APIRouter()
 
+# /chat/?query={query}
 @langchain_router.get("/")
 def read_query(query: str = Query(..., description="Query string to find query")):
     response = get_query(query)
