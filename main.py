@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-from langchain.api import router as langchain_router
 from fastapi.middleware.cors import CORSMiddleware
+from ctrl.api import ctrl_router
+from chat.api import langchain_router
 
 app = FastAPI()
 
@@ -13,7 +14,8 @@ app.add_middleware(
     allow_headers=["*"],  # 모든 HTTP 헤더를 허용합니다.
 )
 
-app.include_router(langchain_router, prefix="/langchain/api")
+app.include_router(langchain_router, prefix="/chat")
+app.include_router(ctrl_router, prefix="/query")
 
 if __name__ == "__main__":
     import uvicorn

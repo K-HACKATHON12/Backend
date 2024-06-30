@@ -1,10 +1,9 @@
 from fastapi import APIRouter, HTTPException, Query
-from services.langchain_service import get_query
+from chat.services.langchain_service import get_query
 
-router = APIRouter()
+langchain_router = APIRouter()
 
-# api/v1/example/query/?query=hello
-@router.get("/query/")
+@langchain_router.get("/")
 def read_query(query: str = Query(..., description="Query string to find query")):
     response = get_query(query)
     if "error" in response.lower():
