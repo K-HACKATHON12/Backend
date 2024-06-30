@@ -13,3 +13,10 @@ def read_facility_info(db: Session = Depends(get_db)):
     if not facility_info:
         raise HTTPException(status_code=404, detail="Facility not found")
     return facility_info
+
+@ctrl_router.get("/len", response_model=int)
+def len_info(db: Session = Depends(get_db)):
+    facility_info = db.query(PopulationWorkplace).limit(100).all()
+    if not facility_info:
+        raise HTTPException(status_code=404, detail="Facility not found")
+    return len(facility_info)
