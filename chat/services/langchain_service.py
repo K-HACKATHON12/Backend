@@ -2,7 +2,7 @@ from langchain.chains import LLMChain
 from langchain import PromptTemplate
 from langchain.chat_models import ChatOpenAI
 import openai
-from core.config import settings
+from chat.core.config import settings
 
 # OpenAI API 키 설정
 openai.api_key = settings.OPENAI_API_KEY

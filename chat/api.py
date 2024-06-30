@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Query
-from services.langchain_service import get_query
+from chat.services.langchain_service import get_query
 
 router = APIRouter()
 

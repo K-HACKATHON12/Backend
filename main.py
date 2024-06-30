@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from langchain.api import router as langchain_router
+from chat.api import router as langchain_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
