@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class LocApartmentInfo(BaseModel):
+class LocApartmentInfoPydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str
@@ -32,7 +32,7 @@ class LocApartmentInfo(BaseModel):
     class Config:
         orm_mode = True
 
-class LocAdministrativeDistrict(BaseModel):
+class LocAdministrativeDistrictPydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str

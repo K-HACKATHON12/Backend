@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-from chat.api import router as langchain_router
 from fastapi.middleware.cors import CORSMiddleware
+from ctrl.api import ctrl_router
+from chat.api import langchain_router
 
 app = FastAPI()
 
@@ -14,6 +15,7 @@ app.add_middleware(
 )
 
 app.include_router(langchain_router, prefix="/chat")
+app.include_router(ctrl_router, prefix="/query")
 
 if __name__ == "__main__":
     import uvicorn

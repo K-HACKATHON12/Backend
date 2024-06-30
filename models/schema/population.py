@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class PopulationStreet(BaseModel):
+class PopulationStreetPydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str
@@ -43,7 +43,7 @@ class PopulationStreet(BaseModel):
     class Config:
         orm_mode = True
 
-class PopulationResident(BaseModel):
+class PopulationResidentPydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str
@@ -88,42 +88,34 @@ class PopulationResident(BaseModel):
     class Config:
         orm_mode = True
 
-class PopulationWorkplace(BaseModel):
-    id: int
-    trdar_cd: int
-    trdar_cd_nm: str
-    trdar_se_cd: str
-    trdar_se_cd_nm: str
-    stdr_yyqu_cd: int
-    tot_wrc_popltn_co: int
-
-    # 남성 연령대별 직장 인구 수
-    mag_10_wrc_popltn_co: int
-    mag_20_wrc_popltn_co: int
-    mag_30_wrc_popltn_co: int
-    mag_40_wrc_popltn_co: int
-    mag_50_wrc_popltn_co: int
-    mag_60_above_wrc_popltn_co: int
-
-    # 여성 연령대별 직장 인구 수
-    fag_10_wrc_popltn_co: int
-    fag_20_wrc_popltn_co: int
-    fag_30_wrc_popltn_co: int
-    fag_40_wrc_popltn_co: int
-    fag_50_wrc_popltn_co: int
-    fag_60_above_wrc_popltn_co: int
-
-    # 연령대별 직장 인구 수
-    agrde_10_wrc_popltn_co: int
-    agrde_20_wrc_popltn_co: int
-    agrde_30_wrc_popltn_co: int
-    agrde_40_wrc_popltn_co: int
-    agrde_50_wrc_popltn_co: int
-    agrde_60_above_wrc_popltn_co: int
-
-    # 성별 직장 인구 수
-    ml_wrc_popltn_co: int
-    fml_wrc_popltn_co: int
+class PopulationWorkplacePydantic(BaseModel):
+    ID: int
+    TRDAR_CD: int
+    TRDAR_CD_NM: str
+    TRDAR_SE_CD: str
+    TRDAR_SE_CD_NM: str
+    STDR_YYQU_CD: int
+    TOT_WRC_POPLTN_CO: int
+    MAG_10_WRC_POPLTN_CO: int
+    MAG_20_WRC_POPLTN_CO: int
+    MAG_30_WRC_POPLTN_CO: int
+    MAG_40_WRC_POPLTN_CO: int
+    MAG_50_WRC_POPLTN_CO: int
+    MAG_60_ABOVE_WRC_POPLTN_CO: int
+    FAG_10_WRC_POPLTN_CO: int
+    FAG_20_WRC_POPLTN_CO: int
+    FAG_30_WRC_POPLTN_CO: int
+    FAG_40_WRC_POPLTN_CO: int
+    FAG_50_WRC_POPLTN_CO: int
+    FAG_60_ABOVE_WRC_POPLTN_CO: int
+    AGRDE_10_WRC_POPLTN_CO: int
+    AGRDE_20_WRC_POPLTN_CO: int
+    AGRDE_30_WRC_POPLTN_CO: int
+    AGRDE_40_WRC_POPLTN_CO: int
+    AGRDE_50_WRC_POPLTN_CO: int
+    AGRDE_60_ABOVE_WRC_POPLTN_CO: int
+    ML_WRC_POPLTN_CO: int
+    FML_WRC_POPLTN_CO: int
 
     class Config:
         orm_mode = True

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class CommercialChangeIndicator(BaseModel):
+class CommercialChangeIndicatorPydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str
@@ -17,7 +17,7 @@ class CommercialChangeIndicator(BaseModel):
     class Config:
         orm_mode = True
 
-class CommercialExpenditure(BaseModel):
+class CommercialExpenditurePydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str
@@ -40,7 +40,7 @@ class CommercialExpenditure(BaseModel):
     class Config:
         orm_mode = True
 
-class CommercialSalesInfo(BaseModel):
+class CommercialSalesInfoPydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str
@@ -115,7 +115,7 @@ class CommercialSalesInfo(BaseModel):
     class Config:
         orm_mode = True
 
-class CommercialBusinessInfo(BaseModel):
+class CommercialBusinessInfoPydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str
@@ -141,7 +141,7 @@ class CommercialBusinessInfo(BaseModel):
     class Config:
         orm_mode = True
 
-class CommercialFacilityInfo(BaseModel):
+class CommercialFacilityInfoPydantic(BaseModel):
     id: int
     trdar_cd: int
     trdar_cd_nm: str
