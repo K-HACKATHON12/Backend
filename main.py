@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api.v1.endpoints.example import router as example_router
+from langchain.api import router as langchain_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -13,7 +13,7 @@ app.add_middleware(
     allow_headers=["*"],  # 모든 HTTP 헤더를 허용합니다.
 )
 
-app.include_router(example_router, prefix="/api/v1/example")
+app.include_router(langchain_router, prefix="/langchain/api")
 
 if __name__ == "__main__":
     import uvicorn
