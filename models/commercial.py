@@ -35,30 +35,30 @@ class CommercialChangeIndicator(Base):
 class CommercialExpenditure(Base):
     __tablename__ = 'commercial_expenditure'
 
-    id = Column(Integer, primary_key=True, autoincrement=True, comment="소득소비_ID")
+    ID = Column(Integer, primary_key=True, autoincrement=True, comment="소득소비_ID")
 
     # 상권 관련 정보
-    trdar_cd = Column(Integer, nullable=False, comment="상권_코드")
-    trdar_cd_nm = Column(String, nullable=False, comment="상권_코드_명")
-    trdar_se_cd = Column(String, nullable=False, comment="상권_구분_코드")
-    trdar_se_cd_nm = Column(String, nullable=False, comment="상권_구분_코드_명")
-    stdr_yyqu_cd = Column(Integer, nullable=False, comment="기준_년분기_코드")
+    TRDAR_CD = Column(Integer, nullable=False, comment="상권_코드")
+    TRDAR_CD_NM = Column(String, nullable=False, comment="상권_코드_명")
+    TRDAR_SE_CD = Column(String, nullable=False, comment="상권_구분_코드")
+    TRDAR_SE_CD_NM = Column(String, nullable=False, comment="상권_구분_코드_명")
+    STDR_YYQU_CD = Column(Integer, nullable=False, comment="기준_년분기_코드")
 
     # 지출 항목별 총 금액
-    lsr_expndtr_totamt = Column(BigInteger, nullable=False, comment="여가_지출_총금액")
-    mcp_expndtr_totamt = Column(BigInteger, nullable=False, comment="의료비_지출_총금액")
-    plesr_expndtr_totamt = Column(BigInteger, nullable=False, comment="유흥_지출_총금액")
-    edc_expndtr_totamt = Column(BigInteger, nullable=False, comment="교육_지출_총금액")
-    cltur_expndtr_totamt = Column(BigInteger, nullable=False, comment="문화_지출_총금액")
-    expndtr_totamt = Column(BigInteger, nullable=False, comment="지출_총금액")
-    fdstffs_expndtr_totamt = Column(BigInteger, nullable=False, comment="식료품_지출_총금액")
-    clths_ftwr_expndtr_totamt = Column(BigInteger, nullable=False, comment="의류_신발_지출_총금액")
-    lvspl_expndtr_totamt = Column(BigInteger, nullable=False, comment="생활용품_지출_총금액")
-    trnsport_expndtr_totamt = Column(BigInteger, nullable=False, comment="교통_지출_총금액")
+    LSR_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="여가_지출_총금액")
+    MCP_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="의료비_지출_총금액")
+    PLESR_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="유흥_지출_총금액")
+    EDC_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="교육_지출_총금액")
+    CLTUR_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="문화_지출_총금액")
+    EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="지출_총금액")
+    FDSTFFS_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="식료품_지출_총금액")
+    CLTHS_FTWR_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="의류_신발_지출_총금액")
+    LVSPL_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="생활용품_지출_총금액")
+    TRNSPORT_EXPNDTR_TOTAMT = Column(BigInteger, nullable=False, comment="교통_지출_총금액")
 
     # 소득 관련 정보
-    income_sctn_cd = Column(Integer, nullable=False, comment="소득_구간_코드")
-    mt_avrg_income_amt = Column(BigInteger, nullable=False, comment="월_평균_소득_금액")
+    INCOME_SCTN_CD = Column(Integer, nullable=False, comment="소득_구간_코드")
+    MT_AVRG_INCOME_AMT = Column(BigInteger, nullable=False, comment="월_평균_소득_금액")
 
 # 상권 추정 매출 데이터 모델
 class CommercialSalesInfo(Base):

@@ -18,24 +18,24 @@ class CommercialChangeIndicatorPydantic(BaseModel):
         orm_mode = True
 
 class CommercialExpenditurePydantic(BaseModel):
-    id: int
-    trdar_cd: int
-    trdar_cd_nm: str
-    trdar_se_cd: str
-    trdar_se_cd_nm: str
-    stdr_yyqu_cd: int
-    lsr_expndtr_totamt: int
-    mcp_expndtr_totamt: int
-    plesr_expndtr_totamt: int
-    edc_expndtr_totamt: int
-    cltur_expndtr_totamt: int
-    expndtr_totamt: int
-    fdstffs_expndtr_totamt: int
-    clths_ftwr_expndtr_totamt: int
-    lvspl_expndtr_totamt: int
-    trnsport_expndtr_totamt: int
-    income_sctn_cd: int
-    mt_avrg_income_amt: int
+    ID: int
+    TRDAR_CD: int
+    TRDAR_CD_NM: str
+    TRDAR_SE_CD: str
+    TRDAR_SE_CD_NM: str
+    STDR_YYQU_CD: int
+    LSR_EXPNDTR_TOTAMT: int
+    MCP_EXPNDTR_TOTAMT: int
+    PLESR_EXPNDTR_TOTAMT: int
+    EDC_EXPNDTR_TOTAMT: int
+    CLTUR_EXPNDTR_TOTAMT: int
+    EXPNDTR_TOTAMT: int
+    FDSTFFS_EXPNDTR_TOTAMT: int
+    CLTHS_FTWR_EXPNDTR_TOTAMT: int
+    LVSPL_EXPNDTR_TOTAMT: int
+    TRNSPORT_EXPNDTR_TOTAMT: int
+    INCOME_SCTN_CD: int
+    MT_AVRG_INCOME_AMT: int
 
     class Config:
         orm_mode = True
