@@ -17,6 +17,3 @@ app.add_middleware(
 app.include_router(langchain_router, prefix="/chat")
 app.include_router(ctrl_router, prefix="/query")
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
