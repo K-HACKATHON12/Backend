@@ -1,33 +1,33 @@
 from pydantic import BaseModel
 
 class LocApartmentInfoPydantic(BaseModel):
-    id: int
-    trdar_cd: int
-    trdar_cd_nm: str
-    trdar_se_cd: str
-    trdar_se_cd_nm: str
-    stdr_yyqu_cd: int
+    ID: int
+    TRDAR_CD: int
+    TRDAR_CD_NM: str
+    TRDAR_SE_CD: str
+    TRDAR_SE_CD_NM: str
+    STDR_YYQU_CD: int
 
     # 아파트 관련 정보
-    apt_hsmp_co: int
-    avrg_ae: int
-    avrg_mktc: int
+    APT_HSMP_CO: int
+    AVRG_AE: int
+    AVRG_MKTC: int
 
     # 아파트 가격대별 세대 수
-    pc_1_hdlmil_belo_hshld_co: int
-    pc_1_hdlmil_hshld_co: int
-    pc_2_hdlmil_hshld_co: int
-    pc_3_hdlmil_hshld_co: int
-    pc_4_hdlmil_hshld_co: int
-    pc_5_hdlmil_hshld_co: int
-    pc_6_hdlmil_above_hshld_co: int
+    PC_1_HDLMIL_BELO_HSHLD_CO: int
+    PC_1_HDLMIL_HSHLD_CO: int
+    PC_2_HDLMIL_HSHLD_CO: int
+    PC_3_HDLMIL_HSHLD_CO: int
+    PC_4_HDLMIL_HSHLD_CO: int
+    PC_5_HDLMIL_HSHLD_CO: int
+    PC_6_HDLMIL_ABOVE_HSHLD_CO: int
 
     # 아파트 면적별 세대 수
-    ae_66_sqmt_belo_hshld_co: int
-    ae_66_sqmt_hshld_co: int
-    ae_99_sqmt_hshld_co: int
-    ae_132_sqmt_hshld_co: int
-    ae_165_sqmt_hshld_co: int
+    AE_66_SQMT_BELO_HSHLD_CO: int
+    AE_66_SQMT_HSHLD_CO: int
+    AE_99_SQMT_HSHLD_CO: int
+    AE_132_SQMT_HSHLD_CO: int
+    AE_165_SQMT_HSHLD_CO: int
 
     class Config:
         orm_mode = True
