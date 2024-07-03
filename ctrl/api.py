@@ -1,5 +1,6 @@
 from typing import List
-from models.population import PopulationWorkplace
+from models.population import PopulationWorkplace, PopulationStreet, PopulationResident
+from models.location import LocApartmentInfo
 from models.schema.population import PopulationWorkplacePydantic
 from models.commercial import CommercialExpenditure
 from models.schema.commercial import CommercialExpenditurePydantic
@@ -35,8 +36,6 @@ class ExpenditureSummary(BaseModel):
 
 @ctrl_router.get("/expenditure/{query}", response_model=List[ExpenditureSummary])
 def expenditure(query: str, db: Session = Depends(get_db)):
-    quarters = [20191, 20192, 20193, 20194, 20201, 20202, 20203, 20204, 20211, 20212, 20213, 20214, 20221, 20222, 20223, 20224, 20231, 20232, 20233, 20234]
-
     queryType = None
     if query == 'total':
         queryType = CommercialExpenditure.EXPNDTR_TOTAMT
@@ -57,8 +56,6 @@ def expenditure(query: str, db: Session = Depends(get_db)):
     expenditure = db.query(
         CommercialExpenditure.STDR_YYQU_CD,
         func.sum(queryType).label('total_amount')
-    ).filter(
-        CommercialExpenditure.STDR_YYQU_CD.in_(quarters)
     ).group_by(
         CommercialExpenditure.STDR_YYQU_CD
     ).order_by(
@@ -68,4 +65,44 @@ def expenditure(query: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Expenditure not found")
 
     return expenditure
+
+class PopulationSummary(BaseModel):
+    STDR_YYQU_CD: int
+    total_population: int
+
+    class Config:
+        orm_mode = True
+
+@ctrl_router.get("/pop/{query}", response_model=List[PopulationSummary])
+def pop_street(query: str, db: Session = Depends(get_db)):
+
+    queryType = None
+    queryMound = None
+    if query == 'res':
+        queryType = PopulationResident
+        queryMound = PopulationResident.TOT_REPOP_CO
+    if query == 'wrk':
+        queryType = PopulationWorkplace
+        queryMound = PopulationWorkplace.TOT_WRC_POPLTN_CO
+    if query == 'street':
+        queryType = PopulationStreet
+        queryMound = PopulationStreet.TOT_FLPOP_CO
+    if query == 'apartment':
+        queryType = LocApartmentInfo
+        queryMound = LocApartmentInfo.APT_HSMP_CO
+
+    if not queryType or not queryMound:
+        raise HTTPException(status_code=404, detail="Query not found")
+
+    population = db.query(
+        queryType.STDR_YYQU_CD,
+        func.sum(queryMound).label('total_population')
+    ).group_by(
+        queryType.STDR_YYQU_CD
+    ).order_by(
+        queryType.STDR_YYQU_CD
+    ).all()
+    if not population:
+        raise HTTPException(status_code=404, detail="Population not found")
+    return population
 
