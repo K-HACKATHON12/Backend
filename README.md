@@ -7,7 +7,7 @@ source venv/Scripts/activate
 # start
 ```shell
 pip install -r requirements.txt
-python main.py
+uvicorn main:app --reload
 ```
 
 # create requirements.txt
