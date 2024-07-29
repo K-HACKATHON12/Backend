@@ -1,14 +1,15 @@
 from typing import List
 from models.population import PopulationWorkplace, PopulationStreet, PopulationResident
+from models.location import LocAdministrativeDistrict
 from models.location import LocApartmentInfo
 from models.schema.population import PopulationWorkplacePydantic
 from models.commercial import CommercialExpenditure
-from models.schema.commercial import CommercialExpenditurePydantic
 from db_config import get_db
 from sqlalchemy.orm import Session
 from fastapi import Depends, APIRouter, HTTPException
 from sqlalchemy import func
 from pydantic import BaseModel
+from pyproj import Transformer
 
 ctrl_router = APIRouter()
 
@@ -106,3 +107,30 @@ def pop_street(query: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Population not found")
     return population
 
+
+class LocSummary(BaseModel):
+    TRDAR_CD: int
+    TRDAR_CD_NM: str
+    longitude: float
+    latitude: float
+
+    class Config:
+        orm_mode = True
+
+@ctrl_router.get("/loc", response_model=List[LocSummary])
+def loc_summary(db: Session = Depends(get_db)):
+    population = db.query(LocAdministrativeDistrict).all()
+    if not population:
+        raise HTTPException(status_code=404, detail="Population not found")
+
+    transformer = Transformer.from_crs("EPSG:5181", "EPSG:4326", always_xy=True)
+    return [
+        LocSummary(
+            TRDAR_CD=item.TRDAR_CD,
+            TRDAR_CD_NM=item.TRDAR_CD_NM,
+            longitude=lon,
+            latitude=lat
+        )
+        for item in population
+        for lon, lat in [transformer.transform(item.XCNTS_VALUE, item.YDNTS_VALUE)]
+    ]

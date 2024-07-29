@@ -41,24 +41,24 @@ class LocApartmentInfo(Base):
 class LocAdministrativeDistrict(Base):
     __tablename__ = 'loc_administrative_district'
 
-    id = Column(Integer, primary_key=True, autoincrement=True, comment="료이키_ID")
+    ID = Column(Integer, primary_key=True, autoincrement=True, comment="료이키_ID")
 
     # 상권 관련 정보
-    trdar_cd = Column(Integer, nullable=False, comment="상권_코드")
-    trdar_cd_nm = Column(String, nullable=False, comment="상권_코드_명")
-    trdar_se_cd = Column(String, nullable=False, comment="상권_구분_코드")
-    trdar_se_cd_nm = Column(String, nullable=False, comment="상권_구분_코드_명")
+    TRDAR_CD = Column(Integer, nullable=False, comment="상권_코드")
+    TRDAR_CD_NM = Column(String, nullable=False, comment="상권_코드_명")
+    TRDAR_SE_CD = Column(String, nullable=False, comment="상권_구분_코드")
+    TRDAR_SE_CD_NM = Column(String, nullable=False, comment="상권_구분_코드_명")
 
     # 행정동 관련 정보
-    adstrd_cd = Column(String, nullable=False, comment="행정동_코드")
-    adstrd_cd_nm = Column(String, nullable=False, comment="행정동_코드_명")
+    ADSTRD_CD = Column(String, nullable=False, comment="행정동_코드")
+    ADSTRD_CD_NM = Column(String, nullable=False, comment="행정동_코드_명")
 
     # 자치구 관련 정보
-    signgu_cd = Column(String, nullable=False, comment="자치구_코드")
-    signgu_cd_nm = Column(String, nullable=False, comment="자치구_코드_명")
+    SIGNGU_CD = Column(String, nullable=False, comment="자치구_코드")
+    SIGNGU_CD_NM = Column(String, nullable=False, comment="자치구_코드_명")
 
     # 좌표 값
-    xcnts_value = Column(Integer, nullable=False, comment="엑스좌표_값")
-    ycnts_value = Column(Integer, nullable=False, comment="와이좌표_값")
+    XCNTS_VALUE = Column(Integer, nullable=False, comment="엑스좌표_값")
+    YDNTS_VALUE = Column(Integer, nullable=False, comment="와이좌표_값")
 
-    relm_ar = Column(Integer, nullable=False, comment="영역_면적")
+    RELM_AR = Column(Integer, nullable=False, comment="영역_면적")
